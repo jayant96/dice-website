@@ -16,8 +16,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: sudo echo "DNS=8.8.8.8" >> /etc/systemd/resolved.conf
-    - run: sudo systemctl daemon-reload
-    - run: sudo systemctl restart systemd-networkd
-    - run: sudo systemctl restart systemd-resolved
-    - run: sudo nslookup dice-website.cs.upb.de
+    - run: mkdir /usr/lib/systemd/resolved.conf.d
+    - run: echo "[Resolve]" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
+    - run: echo "DNS=8.8.8.8" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
+    - run: systemctl daemon-reload
+    - run: systemctl restart systemd-networkd
+    - run: systemctl restart systemd-resolved
+    - run: nslookup dice-website.cs.upb.de
