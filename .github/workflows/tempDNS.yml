@@ -16,5 +16,5 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: nslookup dice-website.cs.upb.de
     - run: cat /etc/systemd/resolved.conf
+#    - run: nslookup dice-website.cs.upb.de
