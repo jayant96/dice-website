@@ -16,9 +16,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: mkdir /usr/lib/systemd/resolved.conf.d
-    - run: echo "[Resolve]" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
-    - run: echo "DNS=8.8.8.8" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
+    - run: sudo mkdir /usr/lib/systemd/resolved.conf.d
+    - run: sudo echo "[Resolve]" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
+    - run: sudo echo "DNS=8.8.8.8" >> /usr/lib/systemd/resolved.conf.d/resolved.conf
     - run: systemctl daemon-reload
     - run: systemctl restart systemd-networkd
     - run: systemctl restart systemd-resolved
