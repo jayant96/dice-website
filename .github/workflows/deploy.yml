@@ -13,7 +13,7 @@ jobs:
           node-version: 12
       - name: configure DNS server
         run: |
-          run: sudo mkdir /usr/lib/systemd/resolved.conf.d
+          sudo mkdir /usr/lib/systemd/resolved.conf.d
           echo "[Resolve]" > resolved.conf
           echo "DNS=8.8.8.8" >> resolved.conf
           sudo mv resolved.conf /usr/lib/systemd/resolved.conf.d/resolved.conf
