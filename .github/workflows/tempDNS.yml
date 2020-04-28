@@ -20,7 +20,7 @@ jobs:
     - run: echo "[Resolve]" > resolved.conf
     - run: echo "DNS=8.8.8.8" >> resolved.conf
     - run: sudo mv resolved.conf /usr/lib/systemd/resolved.conf.d/resolved.conf
-    - run: systemctl daemon-reload
-    - run: systemctl restart systemd-networkd
-    - run: systemctl restart systemd-resolved
+    - run: sudo systemctl daemon-reload
+    - run: sudo systemctl restart systemd-networkd
+    - run: sudo systemctl restart systemd-resolved
     - run: nslookup dice-website.cs.upb.de
